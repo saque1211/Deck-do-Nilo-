@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deck do Nilo · Steakhouse & Parrilla — Jaraguá do Sul</title>
+  <meta name="description" content="Deck do Nilo — cortes nobres na parrilla, ambiente rústico e acolhedor no coração de Jaraguá do Sul. Almoço e jantar todos os dias. A melhor picanha da cidade." />
+  <meta name="theme-color" content="#0d0805" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="Deck do Nilo · Steakhouse & Parrilla" />
+  <meta property="og:description" content="Cortes nobres na parrilla. Sempre a melhor opção pra você. Jaraguá do Sul — SC." />
+  <meta property="og:locale" content="pt_BR" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- Ember canvas backdrop -->
+  <canvas id="embers" aria-hidden="true"></canvas>
+
+  <!-- Navbar -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="Deck do Nilo — início">
+      <span class="nav__flame">🔥</span>
+      <span class="nav__name">Deck do Nilo</span>
+    </a>
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#cortes">Cortes</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#visita">Visita</a>
+    </nav>
+    <a class="btn btn--sm nav__cta" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener">Reservar</a>
+    <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal">Jaraguá do Sul · SC · desde sempre à brasa</p>
+      <h1 class="hero__title">
+        <span class="reveal" style="--d:.05s">O som que o seu</span>
+        <span class="reveal hero__accent" style="--d:.15s">jantar faz.</span>
+      </h1>
+      <p class="hero__lead reveal" style="--d:.25s">
+        Cortes nobres na parrilla, fogo de verdade e um deck que virou ponto de encontro.
+        Sempre a melhor opção pra você.
+      </p>
+      <div class="hero__actions reveal" style="--d:.35s">
+        <a class="btn btn--gold" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener">Reservar uma mesa</a>
+        <a class="btn btn--ghost" href="#cortes">Ver os cortes</a>
+      </div>
+      <dl class="hero__stats reveal" style="--d:.5s">
+        <div><dt>4.9★</dt><dd>no Google</dd></div>
+        <div><dt>15 mil</dt><dd>no Instagram</dd></div>
+        <div><dt>#25</dt><dd>de 755 em Jaraguá</dd></div>
+      </dl>
+    </div>
+    <a href="#sobre" class="hero__scroll" aria-label="Rolar para baixo">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Picanha na brasa</span><i>✦</i>
+      <span>Cortes britânicos</span><i>✦</i>
+      <span>Angus uruguaio</span><i>✦</i>
+      <span>Wagyu japonês</span><i>✦</i>
+      <span>Parrilla argentina</span><i>✦</i>
+      <span>Fondue</span><i>✦</i>
+      <span>Picanha na brasa</span><i>✦</i>
+      <span>Cortes britânicos</span><i>✦</i>
+      <span>Angus uruguaio</span><i>✦</i>
+      <span>Wagyu japonês</span><i>✦</i>
+      <span>Parrilla argentina</span><i>✦</i>
+      <span>Fondue</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- Sobre -->
+  <section class="about" id="sobre">
+    <div class="about__media reveal">
+      <div class="about__card">
+        <span class="about__badge">🥩 Na brasa desde a primeira mesa</span>
+        <div class="about__flame-art" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="about__text">
+      <h2 class="section__title reveal">Um deck, o fogo e a melhor carne da região</h2>
+      <p class="reveal" style="--d:.1s">
+        No Deck do Nilo, cada corte encontra a parrilla no ponto certo. Selecionamos raças
+        <strong>britânicas, uruguaias, japonesas e argentinas</strong> — além de opções halal —
+        para servir uma experiência que começa no aroma da brasa e termina naquele último pedaço
+        que ninguém quer dividir.
+      </p>
+      <p class="reveal" style="--d:.2s">
+        Ambiente rústico, acolhedor e feito pra ficar. Aqui o almoço é fartura e o jantar é ritual.
+      </p>
+      <ul class="about__list">
+        <li class="reveal" style="--d:.25s"><span>🔥</span> Grelha na parrilla, fogo de verdade</li>
+        <li class="reveal" style="--d:.32s"><span>🐄</span> Cortes nobres selecionados</li>
+        <li class="reveal" style="--d:.39s"><span>🍷</span> Carta pensada pra harmonizar</li>
+        <li class="reveal" style="--d:.46s"><span>🌿</span> Ambiente ao ar livre no deck</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Cortes / Menu -->
+  <section class="menu" id="cortes">
+    <div class="menu__head">
+      <p class="section__eyebrow reveal">O cardápio</p>
+      <h2 class="section__title reveal" style="--d:.1s">Cortes que fazem barulho</h2>
+      <p class="section__sub reveal" style="--d:.2s">Uma seleção da casa. O cardápio completo muda com a estação e com o que a brasa pede.</p>
+    </div>
+    <div class="menu__grid">
+      <article class="dish reveal">
+        <div class="dish__top"><span class="dish__emoji">🥩</span><span class="dish__tag">Destaque</span></div>
+        <h3>Picanha do Nilo</h3>
+        <p>A estrela da casa. Selada na parrilla, suculenta, servida na tábua com farofa e chimichurri.</p>
+      </article>
+      <article class="dish reveal" style="--d:.08s">
+        <div class="dish__top"><span class="dish__emoji">🔥</span><span class="dish__tag">Premium</span></div>
+        <h3>Ancho Angus Uruguaio</h3>
+        <p>Marmoreio generoso, ponto no capricho. Maciez que dispensa faca amolada.</p>
+      </article>
+      <article class="dish reveal" style="--d:.16s">
+        <div class="dish__top"><span class="dish__emoji">🇯🇵</span><span class="dish__tag">Assinatura</span></div>
+        <h3>Wagyu Japonês</h3>
+        <p>Para os dias de celebrar. Textura que derrete e sabor que fica.</p>
+      </article>
+      <article class="dish reveal" style="--d:.24s">
+        <div class="dish__top"><span class="dish__emoji">🍢</span><span class="dish__tag">Clássico</span></div>
+        <h3>Costela na Brasa</h3>
+        <p>Horas de fogo lento até desfiar sozinha. O tempo é o segredo.</p>
+      </article>
+      <article class="dish reveal" style="--d:.32s">
+        <div class="dish__top"><span class="dish__emoji">🧀</span><span class="dish__tag">Compartilhar</span></div>
+        <h3>Fondue do Deck</h3>
+        <p>Para noites frias e boas companhias. Queijo, carne e aquele clima.</p>
+      </article>
+      <article class="dish reveal" style="--d:.40s">
+        <div class="dish__top"><span class="dish__emoji">🍔</span><span class="dish__tag">Almoço</span></div>
+        <h3>Burger da Casa</h3>
+        <p>Blend próprio na chapa, pão brioche e o toque de brasa que só o Deck tem.</p>
+      </article>
+    </div>
+    <div class="menu__cta reveal">
+      <a class="btn btn--gold" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Quero%20saber%20o%20card%C3%A1pio%20completo%20do%20Deck%20do%20Nilo." target="_blank" rel="noopener">Pedir o cardápio completo</a>
+    </div>
+  </section>
+
+  <!-- Experiência -->
+  <section class="exp" id="experiencia">
+    <div class="exp__inner">
+      <h2 class="section__title reveal">Mais que um jantar. Um lugar.</h2>
+      <div class="exp__grid">
+        <div class="exp__item reveal"><span class="exp__num">01</span><h3>A chegada</h3><p>O cheiro da brasa te recebe antes da porta. O deck abre pro céu e pro clima da cidade.</p></div>
+        <div class="exp__item reveal" style="--d:.1s"><span class="exp__num">02</span><h3>A escolha</h3><p>Nossa equipe conhece cada corte. Conte o seu momento — a gente sugere a carne certa.</p></div>
+        <div class="exp__item reveal" style="--d:.2s"><span class="exp__num">03</span><h3>A brasa</h3><p>Fogo de verdade, no ponto que você pediu. O som da carne grelhando é parte do prato.</p></div>
+        <div class="exp__item reveal" style="--d:.3s"><span class="exp__num">04</span><h3>A mesa</h3><p>Servido pra dividir, feito pra ficar. Você chega com fome e sai com história pra contar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visita: horários + localização -->
+  <section class="visit" id="visita">
+    <div class="visit__col visit__info">
+      <p class="section__eyebrow reveal">Venha ao Deck</p>
+      <h2 class="section__title reveal" style="--d:.1s">Estamos te esperando</h2>
+
+      <div class="visit__block reveal" style="--d:.15s">
+        <h3>🕒 Horários</h3>
+        <ul class="hours">
+          <li><span>Almoço</span><b>Todos os dias · 11h – 14h</b></li>
+          <li><span>Jantar</span><b>Seg a Sáb · 18h – 22h</b></li>
+        </ul>
+      </div>
+
+      <div class="visit__block reveal" style="--d:.22s">
+        <h3>📍 Endereço</h3>
+        <p>Rua Presidente Epitácio Pessoa, 640<br />Jaraguá do Sul — SC · 89251-100</p>
+        <a class="link" href="https://maps.google.com/?q=Deck+do+Nilo+Rua+Presidente+Epit%C3%A1cio+Pessoa+640+Jaragu%C3%A1+do+Sul" target="_blank" rel="noopener">Ver no mapa →</a>
+      </div>
+
+      <div class="visit__block reveal" style="--d:.29s">
+        <h3>📞 Reservas & contato</h3>
+        <p>+55 47 99778-4320</p>
+        <div class="visit__actions">
+          <a class="btn btn--gold" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/deckdo.nilo" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="visit__col visit__map reveal" style="--d:.2s">
+      <iframe
+        title="Localização do Deck do Nilo no mapa"
+        src="https://www.google.com/maps?q=Rua%20Presidente%20Epit%C3%A1cio%20Pessoa%20640%20Jaragu%C3%A1%20do%20Sul%20SC&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="finale">
+    <div class="finale__glow" aria-hidden="true"></div>
+    <h2 class="reveal">Não veio no Deck ainda? <span>Que dó.</span></h2>
+    <p class="reveal" style="--d:.1s">A mesa está posta, a brasa está acesa. Só falta você.</p>
+    <a class="btn btn--gold btn--lg reveal" style="--d:.2s" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener">Reservar agora</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="foot__brand"><span>🔥</span> Deck do Nilo</div>
+    <p class="foot__tag">Steakhouse & Parrilla · Jaraguá do Sul — SC</p>
+    <nav class="foot__links">
+      <a href="#sobre">Sobre</a>
+      <a href="#cortes">Cortes</a>
+      <a href="#visita">Visita</a>
+      <a href="https://www.instagram.com/deckdo.nilo" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5547997784320" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+    <p class="foot__copy">© <span id="year"></span> Deck do Nilo · Todos os direitos reservados · Feito com fogo 🔥</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
