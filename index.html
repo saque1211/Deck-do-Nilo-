@@ -94,45 +94,8 @@
     <div class="about__media reveal">
       <div class="about__card">
         <span class="about__badge">🥩 Na brasa desde a primeira mesa</span>
-        <svg class="about__art" viewBox="0 0 400 500" role="img" aria-label="Ilustração de um corte de carne na grelha">
-          <defs>
-            <radialGradient id="emberGlow" cx="50%" cy="82%" r="60%">
-              <stop offset="0%" stop-color="#ff8a3d" stop-opacity=".9"/>
-              <stop offset="45%" stop-color="#ff5722" stop-opacity=".45"/>
-              <stop offset="100%" stop-color="#ff5722" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="meat" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#8a3320"/>
-              <stop offset="55%" stop-color="#5e2415"/>
-              <stop offset="100%" stop-color="#3d1810"/>
-            </linearGradient>
-            <linearGradient id="fat" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f2e4c8"/>
-              <stop offset="100%" stop-color="#c9a86a"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="400" height="500" fill="url(#emberGlow)"/>
-          <g stroke="#231712" stroke-width="7" opacity=".55">
-            <line x1="30" y1="360" x2="370" y2="360"/>
-            <line x1="30" y1="392" x2="370" y2="392"/>
-            <line x1="30" y1="424" x2="370" y2="424"/>
-          </g>
-          <g class="about__smoke" fill="none" stroke="#e9dcc7" stroke-width="5" stroke-linecap="round" opacity=".22">
-            <path d="M150 190 q -22 -40 8 -78 q 26 -34 2 -70"/>
-            <path d="M212 175 q 24 -44 -6 -82 q -24 -32 4 -66"/>
-            <path d="M255 200 q 20 -36 -4 -70"/>
-          </g>
-          <g class="about__steak">
-            <path d="M108 232 q -34 -70 30 -104 q 62 -32 128 4 q 66 40 40 108 q -20 56 -96 62 q -84 6 -102 -70 z" fill="url(#meat)" stroke="#2a1109" stroke-width="4"/>
-            <path d="M132 150 q 60 -34 132 -6 q 20 8 26 24 q -70 -30 -128 -4 q -18 8 -30 -14 z" fill="url(#fat)" opacity=".92"/>
-            <g stroke="#25110b" stroke-width="7" stroke-linecap="round" opacity=".5">
-              <line x1="120" y1="205" x2="250" y2="145"/>
-              <line x1="140" y1="235" x2="272" y2="172"/>
-              <line x1="160" y1="262" x2="290" y2="200"/>
-            </g>
-            <ellipse cx="180" cy="190" rx="40" ry="16" fill="#ff9a5a" opacity=".18"/>
-          </g>
-        </svg>
+        <img class="about__photo" src="assets/steak-4-supreme.jpg" alt="Corte no ponto supremo, fatiado na parrilla do Deck do Nilo" loading="lazy" />
+        <span class="about__shine" aria-hidden="true"></span>
       </div>
     </div>
     <div class="about__text">
@@ -199,6 +162,33 @@
     </div>
   </section>
 
+  <!-- Galeria -->
+  <section class="gallery" id="galeria">
+    <div class="gallery__head">
+      <p class="section__eyebrow reveal">Da nossa brasa</p>
+      <h2 class="section__title reveal" style="--d:.1s">Direto da parrilla</h2>
+      <p class="section__sub reveal" style="--d:.2s">Do corte selecionado ao ponto supremo — fogo de verdade, sem filtro.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gallery__item reveal">
+        <img src="assets/steak-1-raw.jpg" alt="Corte nobre selecionado, ainda cru, sobre a grelha" loading="lazy" />
+        <figcaption>O corte</figcaption>
+      </figure>
+      <figure class="gallery__item reveal" style="--d:.08s">
+        <img src="assets/steak-2-searing.jpg" alt="Carne selando na brasa da parrilla" loading="lazy" />
+        <figcaption>Selando na brasa</figcaption>
+      </figure>
+      <figure class="gallery__item reveal" style="--d:.16s">
+        <img src="assets/steak-3-done.jpg" alt="Carne no ponto certo com marcas da grelha" loading="lazy" />
+        <figcaption>No ponto</figcaption>
+      </figure>
+      <figure class="gallery__item gallery__item--wide reveal" style="--d:.24s">
+        <img src="assets/steak-4-supreme.jpg" alt="Corte fatiado revelando o ponto supremo" loading="lazy" />
+        <figcaption>Ponto supremo</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- Experiência -->
   <section class="exp" id="experiencia">
     <div class="exp__inner">
@@ -251,6 +241,7 @@
 
   <!-- Finale -->
   <section class="finale">
+    <img class="finale__bg" src="assets/steak-3-done.jpg" alt="" aria-hidden="true" loading="lazy" />
     <div class="finale__glow" aria-hidden="true"></div>
     <h2 class="reveal">Não veio no Deck ainda? <span>Que dó.</span></h2>
     <p class="reveal" style="--d:.1s">A mesa está posta, a brasa está acesa. Só falta você.</p>
