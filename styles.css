@@ -117,47 +117,57 @@ a { color: inherit; text-decoration: none; }
 .nav__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------- Hero ---------- */
-.hero {
-  position: relative; min-height: 100svh; display: flex; flex-direction: column;
-  justify-content: center; padding: 7rem clamp(1.2rem, 6vw, 5rem) 4rem;
-  isolation: isolate; overflow: hidden;
+/* ---------- 3D Grill Stage (hero) ---------- */
+.stage {
+  position: relative; height: 560vh; z-index: 3;
+  background: linear-gradient(180deg, #100a06, #0d0805 55%, #0a0603);
 }
-.hero__bg {
-  position: absolute; inset: 0; z-index: -3;
+.stage__sticky {
+  position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+  display: flex; align-items: center; isolation: isolate;
+}
+#grill3d { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; display: block; }
+.stage__vignette {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background:
-    radial-gradient(120% 80% at 75% 20%, rgba(122,31,18,.55), transparent 60%),
-    radial-gradient(90% 70% at 15% 90%, rgba(255,87,34,.25), transparent 55%),
-    linear-gradient(180deg, #100a06, #0d0805 60%, #0a0603);
+    radial-gradient(120% 90% at 50% 120%, rgba(255,87,34,.28), transparent 55%),
+    radial-gradient(100% 100% at 50% 40%, transparent 55%, rgba(6,3,1,.7) 100%);
 }
-.hero__glow {
-  position: absolute; z-index: -2; width: 70vmax; height: 70vmax; right: -15vmax; top: -10vmax;
-  background: radial-gradient(circle, rgba(255,138,61,.35), transparent 62%);
-  filter: blur(30px); animation: breathe 8s ease-in-out infinite;
+.stage__ui {
+  position: relative; z-index: 3; width: 100%; max-width: var(--maxw);
+  margin: 0 auto; padding: 0 clamp(1.4rem, 6vw, 5rem); pointer-events: none;
 }
-.hero__inner { max-width: var(--maxw); width: 100%; margin: 0 auto; }
-.hero__eyebrow {
-  text-transform: uppercase; letter-spacing: .38em; font-size: .74rem;
-  color: var(--gold); margin-bottom: 1.4rem;
-}
-.hero__title {
-  font-family: 'Cormorant Garamond', serif; font-weight: 600;
-  font-size: clamp(3.2rem, 11vw, 8rem); line-height: .92; letter-spacing: -.01em;
-  text-shadow: 0 20px 60px rgba(0,0,0,.5);
-}
-.hero__title span { display: block; }
-.hero__accent {
-  background: linear-gradient(100deg, var(--ember-2), var(--gold-2) 55%, var(--ember));
+.stage__ui .btn { pointer-events: auto; }
+.stage__eyebrow { text-transform: uppercase; letter-spacing: .38em; font-size: .74rem; color: var(--gold); margin-bottom: .8rem; }
+.stage__word {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic;
+  font-size: clamp(3.4rem, 13vw, 8.5rem); line-height: .9; letter-spacing: -.01em;
+  text-shadow: 0 20px 60px rgba(0,0,0,.55);
+  background: linear-gradient(100deg, var(--ember-2), var(--gold-2) 60%, var(--ember));
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  font-style: italic;
 }
-.hero__lead { margin-top: 1.6rem; max-width: 48ch; font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--cream-dim); font-weight: 300; }
-.hero__actions { margin-top: 2.3rem; display: flex; flex-wrap: wrap; gap: 1rem; }
-.hero__stats { margin-top: 3.2rem; display: flex; flex-wrap: wrap; gap: 2.6rem; }
-.hero__stats dt { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; color: var(--gold-2); letter-spacing: .02em; }
-.hero__stats dd { font-size: .82rem; color: var(--cream-dim); text-transform: uppercase; letter-spacing: .12em; margin-top: .2rem; }
+.stage__word.is-pop { animation: wordpop .6s var(--ease); }
+.stage__word.is-supreme { animation: wordpop .6s var(--ease), supremeglow 2.4s ease-in-out infinite .6s; }
+.stage__desc { margin-top: 1.2rem; max-width: 40ch; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--cream-dim); font-weight: 300; min-height: 3.2em; }
 
-.hero__scroll { position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); width: 26px; height: 42px; border: 2px solid var(--line); border-radius: 14px; display: grid; place-items: start center; padding-top: 7px; }
-.hero__scroll span { width: 4px; height: 8px; border-radius: 2px; background: var(--gold); animation: scrolldot 1.8s infinite; }
+.doneness { margin-top: 2rem; max-width: 420px; }
+.doneness__track { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid var(--line); overflow: hidden; }
+.doneness__fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #b23018, var(--ember), var(--gold-2)); box-shadow: 0 0 16px rgba(255,120,40,.6); transition: width .12s linear; }
+.doneness__ticks { display: flex; justify-content: space-between; margin-top: .5rem; font-size: .66rem; text-transform: uppercase; letter-spacing: .14em; color: var(--cream-dim); }
+
+.stage__cta { margin-top: 2rem; opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .6s var(--ease); pointer-events: none; }
+.stage__cta.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+
+.stage__scroll { position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .22em; color: var(--cream-dim); transition: opacity .4s; }
+.stage__scroll span { width: 24px; height: 38px; border: 2px solid var(--line); border-radius: 12px; display: grid; place-items: start center; padding-top: 6px; }
+.stage__scroll span::before { content: ''; width: 4px; height: 8px; border-radius: 2px; background: var(--gold); animation: scrolldot 1.8s infinite; }
+
+/* Fallback when Three.js is unavailable */
+.stage.no3d #grill3d { display: none; }
+.stage.no3d .stage__sticky {
+  background: radial-gradient(90% 70% at 50% 100%, rgba(255,87,34,.4), transparent 60%), linear-gradient(180deg, #1a0e07, #0a0603);
+}
+.stage.no3d::after { content: '🥩'; position: fixed; top: 40%; left: 50%; transform: translate(-50%,-50%); font-size: 30vmin; filter: drop-shadow(0 20px 40px rgba(255,87,34,.5)); z-index: 0; }
 
 /* ---------- Marquee ---------- */
 .marquee { background: linear-gradient(90deg, var(--blood), #3a0f08); border-block: 1px solid var(--line); overflow: hidden; padding: .9rem 0; }
@@ -180,14 +190,11 @@ section { position: relative; z-index: 2; }
     linear-gradient(160deg, #2a1409, #14100b);
   border: 1px solid var(--line); box-shadow: var(--shadow);
 }
-.about__flame-art {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(60% 40% at 50% 100%, rgba(255,87,34,.7), transparent 70%),
-    radial-gradient(40% 30% at 30% 90%, rgba(255,190,80,.6), transparent 70%),
-    radial-gradient(40% 30% at 70% 95%, rgba(255,120,40,.55), transparent 70%);
-  filter: blur(6px); animation: breathe 5s ease-in-out infinite;
-}
+.about__art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.about__steak { transform-origin: 50% 55%; animation: breathe 6s ease-in-out infinite; }
+.about__smoke path { stroke-dasharray: 120; animation: smokerise 4s ease-in-out infinite; }
+.about__smoke path:nth-child(2) { animation-delay: 1.1s; }
+.about__smoke path:nth-child(3) { animation-delay: 2.1s; }
 .about__badge {
   position: absolute; top: 1.1rem; left: 1.1rem; z-index: 2;
   background: rgba(13,8,5,.7); backdrop-filter: blur(8px); border: 1px solid var(--line);
@@ -281,6 +288,9 @@ section { position: relative; z-index: 2; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes scrolldot { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(14px);opacity:0} 100%{opacity:0} }
 @keyframes wa-pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+@keyframes wordpop { 0%{opacity:0;transform:translateY(18px) scale(.96);filter:blur(6px)} 100%{opacity:1;transform:none;filter:none} }
+@keyframes supremeglow { 0%,100%{filter:drop-shadow(0 0 10px rgba(255,120,40,.35))} 50%{filter:drop-shadow(0 0 26px rgba(255,150,60,.7))} }
+@keyframes smokerise { 0%{opacity:0;stroke-dashoffset:120} 30%{opacity:.35} 100%{opacity:0;stroke-dashoffset:-40} }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {

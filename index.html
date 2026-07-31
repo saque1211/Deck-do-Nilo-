@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deck do Nilo · Steakhouse & Parrilla — Jaraguá do Sul</title>
-  <meta name="description" content="Deck do Nilo — cortes nobres na parrilla, ambiente rústico e acolhedor no coração de Jaraguá do Sul. Almoço e jantar todos os dias. A melhor picanha da cidade." />
+  <meta name="description" content="Deck do Nilo — cortes nobres na parrilla, ambiente rústico e acolhedor no coração de Jaraguá do Sul. Role a tela e veja a carne chegar ao ponto supremo. A melhor picanha da cidade." />
   <meta name="theme-color" content="#0d0805" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="restaurant" />
   <meta property="og:title" content="Deck do Nilo · Steakhouse & Parrilla" />
-  <meta property="og:description" content="Cortes nobres na parrilla. Sempre a melhor opção pra você. Jaraguá do Sul — SC." />
+  <meta property="og:description" content="Cortes nobres na parrilla. Role e veja o ponto supremo. Jaraguá do Sul — SC." />
   <meta property="og:locale" content="pt_BR" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +19,6 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
-  <!-- Ember canvas backdrop -->
   <canvas id="embers" aria-hidden="true"></canvas>
 
   <!-- Navbar -->
@@ -41,33 +39,31 @@
     </button>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="hero__inner">
-      <p class="hero__eyebrow reveal">Jaraguá do Sul · SC · desde sempre à brasa</p>
-      <h1 class="hero__title">
-        <span class="reveal" style="--d:.05s">O som que o seu</span>
-        <span class="reveal hero__accent" style="--d:.15s">jantar faz.</span>
-      </h1>
-      <p class="hero__lead reveal" style="--d:.25s">
-        Cortes nobres na parrilla, fogo de verdade e um deck que virou ponto de encontro.
-        Sempre a melhor opção pra você.
-      </p>
-      <div class="hero__actions reveal" style="--d:.35s">
-        <a class="btn btn--gold" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Deck%20do%20Nilo." target="_blank" rel="noopener">Reservar uma mesa</a>
-        <a class="btn btn--ghost" href="#cortes">Ver os cortes</a>
+  <!-- ===== 3D GRILL STAGE (hero) ===== -->
+  <section class="stage" id="top">
+    <div class="stage__sticky">
+      <canvas id="grill3d" aria-hidden="true"></canvas>
+      <div class="stage__vignette" aria-hidden="true"></div>
+
+      <div class="stage__ui">
+        <p class="stage__eyebrow">Jaraguá do Sul · SC</p>
+        <h1 class="stage__word" id="stageWord">Cru</h1>
+        <p class="stage__desc" id="stageDesc">Um corte nobre, selecionado a dedo. Role a tela para acender a brasa. 🔥</p>
+
+        <div class="doneness" aria-hidden="true">
+          <div class="doneness__track"><div class="doneness__fill" id="meterFill"></div></div>
+          <div class="doneness__ticks">
+            <span>Cru</span><span>Selando</span><span>No ponto</span><span>Supremo</span>
+          </div>
+        </div>
+
+        <div class="stage__cta" id="stageCta">
+          <a class="btn btn--gold btn--lg" href="https://wa.me/5547997784320?text=Ol%C3%A1!%20Quero%20provar%20o%20ponto%20supremo%20do%20Deck%20do%20Nilo.%20Gostaria%20de%20reservar." target="_blank" rel="noopener">Provar o ponto supremo</a>
+        </div>
       </div>
-      <dl class="hero__stats reveal" style="--d:.5s">
-        <div><dt>4.9★</dt><dd>no Google</dd></div>
-        <div><dt>15 mil</dt><dd>no Instagram</dd></div>
-        <div><dt>#25</dt><dd>de 755 em Jaraguá</dd></div>
-      </dl>
+
+      <div class="stage__scroll" id="stageScroll" aria-hidden="true"><span></span>role para assar</div>
     </div>
-    <a href="#sobre" class="hero__scroll" aria-label="Rolar para baixo">
-      <span></span>
-    </a>
   </section>
 
   <!-- Marquee -->
@@ -93,7 +89,45 @@
     <div class="about__media reveal">
       <div class="about__card">
         <span class="about__badge">🥩 Na brasa desde a primeira mesa</span>
-        <div class="about__flame-art" aria-hidden="true"></div>
+        <svg class="about__art" viewBox="0 0 400 500" role="img" aria-label="Ilustração de um corte de carne na grelha">
+          <defs>
+            <radialGradient id="emberGlow" cx="50%" cy="82%" r="60%">
+              <stop offset="0%" stop-color="#ff8a3d" stop-opacity=".9"/>
+              <stop offset="45%" stop-color="#ff5722" stop-opacity=".45"/>
+              <stop offset="100%" stop-color="#ff5722" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="meat" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8a3320"/>
+              <stop offset="55%" stop-color="#5e2415"/>
+              <stop offset="100%" stop-color="#3d1810"/>
+            </linearGradient>
+            <linearGradient id="fat" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f2e4c8"/>
+              <stop offset="100%" stop-color="#c9a86a"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="500" fill="url(#emberGlow)"/>
+          <g stroke="#231712" stroke-width="7" opacity=".55">
+            <line x1="30" y1="360" x2="370" y2="360"/>
+            <line x1="30" y1="392" x2="370" y2="392"/>
+            <line x1="30" y1="424" x2="370" y2="424"/>
+          </g>
+          <g class="about__smoke" fill="none" stroke="#e9dcc7" stroke-width="5" stroke-linecap="round" opacity=".22">
+            <path d="M150 190 q -22 -40 8 -78 q 26 -34 2 -70"/>
+            <path d="M212 175 q 24 -44 -6 -82 q -24 -32 4 -66"/>
+            <path d="M255 200 q 20 -36 -4 -70"/>
+          </g>
+          <g class="about__steak">
+            <path d="M108 232 q -34 -70 30 -104 q 62 -32 128 4 q 66 40 40 108 q -20 56 -96 62 q -84 6 -102 -70 z" fill="url(#meat)" stroke="#2a1109" stroke-width="4"/>
+            <path d="M132 150 q 60 -34 132 -6 q 20 8 26 24 q -70 -30 -128 -4 q -18 8 -30 -14 z" fill="url(#fat)" opacity=".92"/>
+            <g stroke="#25110b" stroke-width="7" stroke-linecap="round" opacity=".5">
+              <line x1="120" y1="205" x2="250" y2="145"/>
+              <line x1="140" y1="235" x2="272" y2="172"/>
+              <line x1="160" y1="262" x2="290" y2="200"/>
+            </g>
+            <ellipse cx="180" cy="190" rx="40" ry="16" fill="#ff9a5a" opacity=".18"/>
+          </g>
+        </svg>
       </div>
     </div>
     <div class="about__text">
@@ -116,7 +150,7 @@
     </div>
   </section>
 
-  <!-- Cortes / Menu -->
+  <!-- Cortes -->
   <section class="menu" id="cortes">
     <div class="menu__head">
       <p class="section__eyebrow reveal">O cardápio</p>
@@ -173,7 +207,7 @@
     </div>
   </section>
 
-  <!-- Visita: horários + localização -->
+  <!-- Visita -->
   <section class="visit" id="visita">
     <div class="visit__col visit__info">
       <p class="section__eyebrow reveal">Venha ao Deck</p>
@@ -210,7 +244,7 @@
     </div>
   </section>
 
-  <!-- CTA final -->
+  <!-- Finale -->
   <section class="finale">
     <div class="finale__glow" aria-hidden="true"></div>
     <h2 class="reveal">Não veio no Deck ainda? <span>Que dó.</span></h2>
@@ -236,6 +270,8 @@
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
   </a>
 
+  <script src="vendor/three.min.js"></script>
+  <script src="grill3d.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
