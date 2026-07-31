@@ -34,25 +34,41 @@
     );
   }
 
-  /* --- 3D grill stage: scroll progress + doneness UI --- */
+  /* --- 3D grill stage: scroll progress, imagination words & doneness UI --- */
   const stage = document.querySelector('.stage');
-  const stageWord = document.getElementById('stageWord');
-  const stageDesc = document.getElementById('stageDesc');
+  const imagination = document.getElementById('imagination');
   const meterFill = document.getElementById('meterFill');
   const stageCta = document.getElementById('stageCta');
   const stageScroll = document.getElementById('stageScroll');
 
   if (stage) {
-    const stages = [
-      { t: 0.00, word: 'Cru', desc: 'Um corte nobre, selecionado a dedo. Role a tela para acender a brasa. 🔥' },
-      { t: 0.20, word: 'Selando', desc: 'A parrilla recebe a carne. O selo dourado começa a se formar.' },
-      { t: 0.45, word: 'No ponto', desc: 'Suco por dentro, crosta por fora. O aroma toma conta do deck.' },
-      { t: 0.68, word: 'Quase lá', desc: 'A última virada na brasa antes de ir pra tábua.' },
-      { t: 0.84, word: 'Ponto supremo', desc: 'Cortada na hora, rosada por dentro. É assim que se serve no Deck do Nilo.' },
+    // Floating phrases that materialize like imagination as you scroll.
+    // t0..t1 = scroll window; x/y = viewport position (%); s = size scale; k = kind
+    const words = [
+      { tx: 'Imagine…',                 x: 22, y: 24, t0: 0.01, t1: 0.11, s: 1.4, k: 'soft' },
+      { tx: 'A melhor carne do Brasil', x: 34, y: 44, t0: 0.05, t1: 0.20, s: 1.0, k: 'hero' },
+      { tx: 'Angus certificado',        x: 62, y: 24, t0: 0.15, t1: 0.30, s: 1.0, k: 'tag' },
+      { tx: 'Marmoreio perfeito',       x: 34, y: 66, t0: 0.22, t1: 0.36, s: 1.0, k: 'tag' },
+      { tx: 'Wagyu que derrete',        x: 52, y: 58, t0: 0.32, t1: 0.47, s: 0.95, k: 'hero' },
+      { tx: 'Fogo de verdade',          x: 34, y: 28, t0: 0.44, t1: 0.58, s: 1.0, k: 'tag' },
+      { tx: 'Selada na parrilla',       x: 60, y: 40, t0: 0.54, t1: 0.66, s: 1.0, k: 'tag' },
+      { tx: 'Suculência pura',          x: 36, y: 64, t0: 0.62, t1: 0.75, s: 0.95, k: 'hero' },
+      { tx: 'Aroma de brasa',           x: 63, y: 62, t0: 0.70, t1: 0.82, s: 1.0, k: 'tag' },
+      { tx: 'Ponto supremo',            x: 50, y: 42, t0: 0.85, t1: 1.01, s: 1.0, k: 'supreme' },
     ];
-    let lastIdx = -1;
-    let ticking = false;
 
+    const els = words.map((w) => {
+      const el = document.createElement('div');
+      el.className = 'imag-word imag-word--' + w.k;
+      el.textContent = w.tx;
+      el.style.left = w.x + '%';
+      el.style.top = w.y + '%';
+      el.style.setProperty('--s', w.s);
+      imagination.appendChild(el);
+      return el;
+    });
+
+    let ticking = false;
     const update = () => {
       ticking = false;
       const rect = stage.getBoundingClientRect();
@@ -62,14 +78,20 @@
       if (window.Grill) window.Grill.setProgress(p);
       if (meterFill) meterFill.style.width = (p * 100).toFixed(1) + '%';
 
-      let idx = 0;
-      for (let i = 0; i < stages.length; i++) if (p >= stages[i].t) idx = i;
-      if (idx !== lastIdx) {
-        lastIdx = idx;
-        if (stageWord) { stageWord.textContent = stages[idx].word; stageWord.classList.remove('is-pop'); void stageWord.offsetWidth; stageWord.classList.add('is-pop'); }
-        if (stageDesc) stageDesc.textContent = stages[idx].desc;
-        if (stageWord) stageWord.classList.toggle('is-supreme', idx === stages.length - 1);
+      // fade each phrase in/out within its scroll window
+      for (let i = 0; i < words.length; i++) {
+        const w = words[i], el = els[i];
+        let o = 0, drift = 30;
+        if (p >= w.t0 && p <= w.t1) {
+          const local = (p - w.t0) / (w.t1 - w.t0);          // 0..1 across window
+          o = Math.sin(local * Math.PI);                     // fade in then out
+          o = Math.min(1, o * 1.6);
+          drift = (0.5 - local) * 60;                         // rise as it passes
+        }
+        el.style.opacity = o.toFixed(3);
+        el.style.transform = `translate(-50%,-50%) translateY(${drift.toFixed(1)}px) scale(${(0.9 + o * 0.12).toFixed(3)})`;
       }
+
       if (stageCta) stageCta.classList.toggle('is-visible', p >= 0.86);
       if (stageScroll) stageScroll.style.opacity = p > 0.05 ? '0' : '1';
     };
